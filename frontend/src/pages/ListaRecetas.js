@@ -19,6 +19,7 @@ const ListaRecetas = () => {
             <h3>{receta.nombre}</h3>
             <p><strong>Categoría:</strong> {receta.categoria}</p>
             <p><strong>Ingredientes:</strong> {receta.ingredientes.join(", ")}</p>
+            <p><strong>Tiempo Estimado:</strong> {receta.tiempoPreparacion} Minutos</p>
             <p><strong>Pasos:</strong> {receta.pasos}</p>
           </li>
         ))}

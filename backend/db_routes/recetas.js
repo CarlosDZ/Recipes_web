@@ -34,4 +34,14 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// Endpoint para obtener las categorías válidas
+router.get("/categorias", (req, res) => {
+  try {
+    const categoriasValidas = Receta.schema.path("categoria").enumValues;
+    res.json(categoriasValidas);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener categorías" });
+  }
+});
+
 export default router;
