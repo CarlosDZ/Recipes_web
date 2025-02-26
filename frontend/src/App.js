@@ -1,30 +1,19 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ListaRecetas from "./pages/ListaRecetas";
+import AgregarReceta from "./pages/AgregarReceta";
 
 const App = () => {
-  const [recetas, setRecetas] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/api/recetas")
-      .then(response => setRecetas(response.data))
-      .catch(error => console.error("Error al obtener recetas:", error));
-  }, []);
-
   return (
-    <div>
-      <h1>Lista de Recetas</h1>
-      <ul>
-        {recetas.map((receta) => (
-          <li key={receta._id}>
-            <h3>{receta.nombre}</h3>
-            <p><strong>Categoría:</strong> {receta.categoria}</p>
-            <p><strong>Ingredientes:</strong> {receta.ingredientes.join(", ")}</p>
-            <p><strong>Tiempo estimado:</strong> {receta.tiempoPreparacion} Minutos</p>
-            <p><strong>Pasos:</strong> {receta.pasos}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Router>
+      <nav>
+        <Link to="/">Inicio</Link> | <Link to="/agregar">Añadir Receta</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<ListaRecetas />} />
+        <Route path="/agregar" element={<AgregarReceta />} />
+      </Routes>
+    </Router>
   );
 };
 
