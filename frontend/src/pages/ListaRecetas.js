@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const ListaRecetas = () => {
@@ -16,7 +17,7 @@ const ListaRecetas = () => {
       <ul>
         {recetas.map((receta) => (
           <li key={receta._id}>
-            <h3>{receta.nombre}</h3>
+            <h3><Link to={`/receta/${receta._id}`}>{receta.nombre}</Link></h3>
             <p><strong>Categoría:</strong> {receta.categoria}</p>
             <p><strong>Ingredientes:</strong> {receta.ingredientes.join(", ")}</p>
             <p><strong>Tiempo Estimado:</strong> {receta.tiempoPreparacion} Minutos</p>

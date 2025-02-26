@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Buscador = () => {
@@ -29,7 +30,7 @@ const Buscador = () => {
       <ul>
         {resultados.map((receta) => (
           <li key={receta._id}>
-            <strong>{receta.nombre}</strong> - {receta.categoria}
+            <strong><Link to={`/receta/${receta._id}`}>{receta.nombre}</Link></strong> - {receta.categoria}
             <br />
             <p><strong>Tiempo Estimado: </strong>{receta.tiempoPreparacion} Minutos</p>
             <p><strong>Preparacion: </strong>{receta.pasos}</p>

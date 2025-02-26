@@ -44,7 +44,7 @@ router.get("/categorias", (req, res) => {
   }
 });
 
-// BBusqueda flexible por nombre
+// Busqueda flexible por nombre
 router.get("/buscar", async (req, res) => {
   try {
     const { nombre } = req.query;
@@ -57,5 +57,19 @@ router.get("/buscar", async (req, res) => {
     res.status(500).json({ error: "Error al buscar recetas" });
   }
 });
+
+// GET segun ID unico
+router.get("/:id", async (req, res) => {
+  try {
+      const receta = await Receta.findById(req.params.id);
+      if (!receta) {
+          return res.status(404).json({ error: "Receta no encontrada" });
+      }
+      res.json(receta);
+  } catch (error) {
+      res.status(500).json({ error: "Error al obtener la receta" });
+  }
+});
+
 
 export default router;

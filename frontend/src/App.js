@@ -4,6 +4,7 @@ import ListaRecetas from "./pages/ListaRecetas";
 import AgregarReceta from "./pages/AgregarReceta";
 import Buscador from "./pages/Buscador";
 import BorrarReceta from "./pages/BorrarReceta";
+import RecetaDetallada from "./pages/RecetaDetallada";
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/agregar" element={<AgregarReceta />} />
         <Route path="/buscar" element={<Buscador />} />
         <Route path="/borrar" element={<BorrarReceta />} />
+        <Route path="/receta/:id" element={<RecetaDetallada />} />
       </Routes>
     </Router>
   );

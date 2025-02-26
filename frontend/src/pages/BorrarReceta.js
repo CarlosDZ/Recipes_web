@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const EliminarReceta = () => {
@@ -39,7 +40,7 @@ const EliminarReceta = () => {
       <ul>
         {resultados.map((receta) => (
           <li key={receta._id}>
-            <strong>{receta.nombre}</strong> - {receta.categoria}
+            <strong><Link to={`/receta/${receta._id}`}>{receta.nombre}</Link></strong> - {receta.categoria}
             <button onClick={() => eliminarReceta(receta._id)} style={{ marginLeft: "10px", color: "red" }}>
                 BORRAR
             </button>
