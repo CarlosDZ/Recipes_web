@@ -44,4 +44,18 @@ router.get("/categorias", (req, res) => {
   }
 });
 
+// BBusqueda flexible por nombre
+router.get("/buscar", async (req, res) => {
+  try {
+    const { nombre } = req.query;
+    if (!nombre) return res.status(400).json({ error: "Falta el parámetro 'nombre'" });
+
+    const recetas = await Receta.find({ nombre: { $regex: nombre, $options: "i" } });
+
+    res.json(recetas);
+  } catch (error) {
+    res.status(500).json({ error: "Error al buscar recetas" });
+  }
+});
+
 export default router;
