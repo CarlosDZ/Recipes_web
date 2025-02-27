@@ -31,7 +31,7 @@ const recetaSchema = new mongoose.Schema(
       default: "resources/ImagePlaceholder.png",
     },
   },
-  { timestamps: true } // Agrega `createdAt` y `updatedAt`
+  { timestamps: true }
 );
 
 const Receta = mongoose.model("Receta", recetaSchema);
