@@ -9,7 +9,7 @@ const EliminarReceta = () => {
   const buscarRecetas = async () => {
     if (!nombre) return;
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/recetas/buscar?nombre=${nombre}`);
+      const { data } = await axios.get(process.env.REACT_APP_BACKEND_URL+`/api/recetas/buscar?nombre=${nombre}`);
       setResultados(data);
     } catch (error) {
       console.error("Error al buscar recetas", error);
@@ -19,7 +19,7 @@ const EliminarReceta = () => {
   const eliminarReceta = async (id) => {
     if (!window.confirm("¿Seguro que quieres eliminar esta receta?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/recetas/${id}`);
+      await axios.delete(process.env.REACT_APP_BACKEND_URL+`/api/recetas/${id}`);
       setResultados(resultados.filter((receta) => receta._id !== id));
     } catch (error) {
       console.error("Error al eliminar receta", error);

@@ -7,7 +7,7 @@ function RecetaDetalle() {
   const [receta, setReceta] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/recetas/${id}`)
+    axios.get(process.env.REACT_APP_BACKEND_URL+`/api/recetas/${id}`)
       .then((response) => setReceta(response.data))
       .catch((error) => console.error("Error al obtener la receta:", error));
   }, [id]);
@@ -21,7 +21,7 @@ function RecetaDetalle() {
       <p><strong>Ingredientes:</strong> {receta.ingredientes.join(", ")}</p>
       <p><strong>Pasos:</strong> {receta.pasos}</p>
       <p><strong>Tiempo de preparación:</strong> {receta.tiempoPreparacion} min</p>
-      <img src={`http://localhost:5000/${receta.imagen}`} alt={`No se encuentra la imagen de ${receta.nombre}`} width="200" />    </div>
+      <img src={process.env.REACT_APP_BACKEND_URL+`/${receta.imagen}`} alt={`No se encuentra la imagen de ${receta.nombre}`} width="200" />    </div>
   );
 }
 

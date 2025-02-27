@@ -6,7 +6,7 @@ const ListaRecetas = () => {
   const [recetas, setRecetas] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/recetas")
+    axios.get(process.env.REACT_APP_BACKEND_URL+"/api/recetas")
       .then(response => setRecetas(response.data))
       .catch(error => console.error("Error al obtener recetas:", error));
   }, []);

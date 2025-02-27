@@ -9,7 +9,7 @@ const Buscador = () => {
   const buscarRecetas = async () => {
     if (!nombre) return;
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/recetas/buscar?nombre=${nombre}`);
+      const { data } = await axios.get(process.env.REACT_APP_BACKEND_URL+`/api/recetas/buscar?nombre=${nombre}`);
       setResultados(data);
     } catch (error) {
       console.error("Error al buscar recetas", error);

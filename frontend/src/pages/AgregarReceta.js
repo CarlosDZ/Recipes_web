@@ -11,7 +11,7 @@ const AgregarReceta = () => {
 
   // Obtener categorías desde el backend
   useEffect(() => {
-    axios.get("http://localhost:5000/api/recetas/categorias")
+    axios.get(process.env.REACT_APP_BACKEND_URL+"/api/recetas/categorias")
       .then(response => {
         setCategoriasDisponibles(response.data);
       })
@@ -32,7 +32,7 @@ const AgregarReceta = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/api/recetas", nuevaReceta);
+      await axios.post(process.env.REACT_APP_BACKEND_URL+"/api/recetas", nuevaReceta);
       alert("Receta agregada correctamente");
     } catch (error) {
       console.error("Error al agregar la receta:", error);
